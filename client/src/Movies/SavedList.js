@@ -5,9 +5,11 @@ const SavedList = ({ list }) => (
   <div className="saved-list">
     <h3>Saved Movies:</h3>
     {list.map(movie => (
-      <span className="saved-movie" key={movie.title}>
-        {movie.title}
-      </span>
+      <Link to={`/movies/${movie.id}`}>
+        <span className="saved-movie" key={movie.title}>
+          {movie.title}
+        </span>
+      </Link>
     ))}
     <Link to="/" className="home-button">
       Home

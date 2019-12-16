@@ -20,6 +20,7 @@ const MovieList = props => {
 
     getMovies();
   }, []);
+  //MERGE ANY CONFLICTS HERE BECAUSE I"VE FIXED AN INFINITE LOOP IN STRETCH BRANCH
 
   return (
     <div className="movie-list">
