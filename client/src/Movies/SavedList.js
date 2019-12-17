@@ -1,12 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
-const SavedList = props => (
+const SavedList = ({ list }) => (
   <div className="saved-list">
     <h3>Saved Movies:</h3>
-    {props.list.map(movie => (
-      <span className="saved-movie">{movie.title}</span>
-    ))}
+    <div>
+      {list.map(movie => (
+        <NavLink
+          to={`/movies/${movie.id}`}
+          className="saved-movie"
+          key={movie.title}
+        >
+          {movie.title}
+        </NavLink>
+      ))}
+    </div>
+
     <Link to="/" className="home-button">
       Home
     </Link>
@@ -14,3 +23,9 @@ const SavedList = props => (
 );
 
 export default SavedList;
+
+// <Link to={`/movies/${movie.id}`} key={movie.title}>
+//   <span className="saved-movie" key={movie.title}>
+//     {movie.title}
+//   </span>
+// </Link>

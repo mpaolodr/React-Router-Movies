@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+import MovieCard from "./MovieCard.js";
+
 const MovieList = props => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
@@ -18,6 +20,7 @@ const MovieList = props => {
 
     getMovies();
   }, []);
+  //MERGE ANY CONFLICTS HERE BECAUSE I"VE FIXED AN INFINITE LOOP IN STRETCH BRANCH
 
   return (
     <div className="movie-list">
@@ -31,25 +34,7 @@ const MovieList = props => {
 };
 
 function MovieDetails({ movie }) {
-  const { title, director, metascore, stars } = movie;
-  return (
-    <div className="movie-card">
-      <h2>{title}</h2>
-      <div className="movie-director">
-        Director: <em>{director}</em>
-      </div>
-      <div className="movie-metascore">
-        Metascore: <strong>{metascore}</strong>
-      </div>
-      <h3>Actors</h3>
-
-      {stars.map(star => (
-        <div key={star} className="movie-star">
-          {star}
-        </div>
-      ))}
-    </div>
-  );
+  return <MovieCard movie={movie} />;
 }
 
 export default MovieList;
